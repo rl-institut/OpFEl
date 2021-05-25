@@ -1,6 +1,6 @@
 __copyright__ = "Reiner Lemoine Institut gGmbH"
 __license__   = "GNU Affero General Public License Version 3 (AGPL-3.0)"
-__url__       = "https://github.com/AnyaHe/survey_eval/blob/master/LICENSE"
+__url__       = "https://github.com/rl-institut/OpFEl/blob/master/LICENSE"
 __author__    = "AnyaHe, ricrei, a-linke"
 
 

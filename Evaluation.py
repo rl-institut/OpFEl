@@ -31,7 +31,7 @@ spatial_scope['other spatial scope/used'] = \
 
 plot_bar_horizontal(
     spatial_scope, ['Local', 'Regional', 'National', 'International', 'Other'],
-    title='Spatial Scope', max_val=nr_of_surveys, no_label=True,
+    title='Spatial scope', max_val=nr_of_surveys, no_label=True,
     save_fig_dir=module_path + '/plots/01a_paper_spatial_scope.pdf')
 
 print(table_values['other spatial scope'])
@@ -44,8 +44,8 @@ temporal_scope['other temporal scope/used'] = \
     len(table_values['other temporal scope'].to_numpy().nonzero()[0])
 
 plot_bar_horizontal(
-    temporal_scope, ['Very Short', 'Short', 'Intermediate', 
-                     'Long', 'Other'], title='Temporal Scope',
+    temporal_scope, ['Very short', 'Short', 'Intermediate',
+                     'Long', 'Other'], title='Temporal scope',
     max_val=nr_of_surveys, no_label=True,
     save_fig_dir=module_path + '/plots/01b_paper_temporal_scope.pdf')
 
@@ -81,13 +81,13 @@ evaluation_parameters = tools.default_evaluation_parameters()
 # ## Supply representation
 
 parameters_with_weights_supply = {
-    'Technology\nRepresentation':
+    'Technology\nrepresentation':
         {'coal': 1, 'lignite': 1, 'oil': 1, 'natural gas': 1, 'CCGT': 1,
          'OCGT': 1, 'bioenergy': 1, 'Hydro reservoir': 1, 'geothermal energy': 1,
          'concentrated solar': 1, 'photovoltaic': 1, 'wind onshore': 1,
          'wind offshore': 1, 'river hydro': 1, 'wave power': 1, 'tidal power': 1,
          'PEM-FC': 1, 'SOFC': 1, 'nuclear': 1},
-    'Detailed\nCharacteristics':
+    'Detailed\ncharacteristics':
         {'efficiency': 1, 'ramping': 1, 'response time': 1, 'recovery time': 1,
          'discrete capacity expansion': 1, 'curtailed operation': 1,
          'minimum load': 1}
@@ -118,16 +118,16 @@ parameters_with_weights_supply_tech = {
     'Variable\nRES':
         {'photovoltaic': 1, 'wind onshore': 1, 'wind offshore': 1,
          'river hydro': 1, 'wave power': 1, 'tidal power': 1},
-    'Fuel Cells':
+    'Fuel cells':
         {'PEM-FC': 1, 'SOFC': 1}
 }
 
 parameters_with_weights_supply_char = {
-    'Technology\nSpecifications':
+    'Technology\nspecifications':
         {'curtailed operation': 1, 'minimum load': 1},
     'Operations':
         {'efficiency': 1, 'ramping': 1, 'response time': 1, 'recovery time': 1},
-    'Discrete\nExpansion':
+    'Discrete\nexpansion':
         {'discrete capacity expansion': 1,}
 }
 
@@ -142,7 +142,7 @@ weighted_models_supply_char_df = \
 
 rating_supply_df = \
     pd.DataFrame(rating_supply.sort_values(ascending=False)).rename(
-        columns={0:'Overall\nRating'})
+        columns={0:'Overall\nrating'})
 plot_representation_triple(
     rating_supply_df, weighted_models_supply_tech_df[
         parameters_with_weights_supply_tech.keys()].loc[
@@ -164,9 +164,9 @@ plot_representation_triple(
 
 # Demand dict
 parameters_with_weights_demand = {
-    'Technology\nRepresentation':
+    'Technology\nrepresentation':
         {'households': 1, 'industrial load': 1, 'service sector': 1},
-    'Detailed\nCharacteristics':
+    'Detailed\ncharacteristics':
         {'efficiency': 1, 'ramping': 1, 'response time': 1, 'recovery time': 1,
          'maximum deferrable load': 1, 'shifting time': 1, 'price elasticity': 1}
 }
@@ -190,11 +190,11 @@ parameters_with_weights_demand_tech = {
     'Industry': {'industrial load': 1}, 
     'Service': {'service sector': 1}}
 parameters_with_weights_demand_char = {
-    'Technology\nSpecifications':
+    'Technology\nspecifications':
         {'maximum deferrable load': 1, 'shifting time': 1},
     'Operations':
         {'efficiency': 1, 'ramping': 1, 'response time': 1, 'recovery time': 1},
-    'Price\nElasticity':
+    'Price\nelasticity':
         {'price elasticity': 1}
 }
 
@@ -209,7 +209,7 @@ weighted_models_demand_char_df = \
 
 # plot all dual
 rating_demand_df = pd.DataFrame(
-    rating_demand.sort_values(ascending=False)).rename(columns={0:'Overall\nRating'})
+    rating_demand.sort_values(ascending=False)).rename(columns={0:'Overall\nrating'})
 plot_representation_triple(rating_demand_df,
     weighted_models_demand_tech_df[parameters_with_weights_demand_tech.keys()].loc[
         rating_demand.sort_values(ascending=False).index], 
@@ -222,9 +222,9 @@ plot_representation_triple(rating_demand_df,
 
 # Storage dict
 parameters_with_weights_storage = {
-    'Technology\nRepresentation':
+    'Technology\nrepresentation':
         {'Batteries': 1,  'PHS': 1, 'CAES': 1, 'Caps': 1, 'Flywheels': 1},
-    'Detailed\nCharacteristics':
+    'Detailed\ncharacteristics':
         {'efficiency': 1, 'ramping': 1, 'response time': 1, 'recovery time': 1,
          'storage implementation': 1, 'aging': 1, 'self discharge': 1}
 }
@@ -244,12 +244,12 @@ plot_representation_single(
 
 # Storage dict
 parameters_with_weights_storage_tech = {
-    'Long-term': {'PHS': 1, 'CAES': 1}, 
-    'Medium-term': {'Batteries': 1},  
-    'Short-term': {'Caps': 1, 'Flywheels': 1},}
+    'Long term': {'PHS': 1, 'CAES': 1},
+    'Medium term': {'Batteries': 1},
+    'Short term': {'Caps': 1, 'Flywheels': 1},}
 parameters_with_weights_storage_char = {
-    'Technology\nSpecifications': {'aging': 1, 'self discharge': 1}, 
-    'Storage\nImplementation': {'storage implementation': 1},
+    'Technology\nspecifications': {'aging': 1, 'self discharge': 1},
+    'Storage\nimplementation': {'storage implementation': 1},
     'Operations': {'efficiency': 1, 'ramping': 1, 'response time': 1,
                    'recovery time': 1}
 }
@@ -263,7 +263,7 @@ weighted_models_storage_char_df = tools.get_weighted_models_from_evaluation_dict
 # plot all dual
 rating_storage_df = \
     pd.DataFrame(rating_storage.sort_values(ascending=False)).rename(
-        columns={0:'Overall\nRating'})
+        columns={0:'Overall\nrating'})
 plot_representation_triple(
     rating_storage_df, weighted_models_storage_tech_df[
         parameters_with_weights_storage_tech.keys()].loc[
@@ -277,10 +277,10 @@ plot_representation_triple(
 
 # Sector coupling dict
 parameters_with_weights_sector = {
-    'Technology\nRepresentation': {
+    'Technology\nrepresentation': {
         'P2H2': 1, 'HP': 1, 'EV': 1, 'Fuels': 1, 'Heat storage': 1,
         'V2G': 1, 'CHP': 1},
-    'Detailed\nCharacteristics':
+    'Detailed\ncharacteristics':
         {'efficiency': 1, 'ramping': 1, 'response time': 1, 'recovery time': 1,
          'Heat': 1, 'Transport': 1, 'sector coupling supply': 1,
          'sector coupling demand': 1, 'sector coupling storage': 1},
@@ -294,19 +294,19 @@ rating_sector.sort_values(ascending=False)*100
 # Plot all models
 plot_representation_single(
     weighted_models_sector_df.loc[
-        rating_sector.sort_values(ascending=False).index], 'Sector Coupling')
+        rating_sector.sort_values(ascending=False).index], 'Sector coupling')
 
 
 # ### Detailed Evaluation
 
 # Sector coupling dict
 parameters_with_weights_sector_tech = {
-    'Supply\nTechnology': {'CHP': 1},
-    'Demand\nTechnology': {'P2H2': 1, 'HP': 1, 'EV': 1}, #P2H2 represents P2G here
-    'Storage\nTechnology': {'Fuels': 1, 'Heat storage': 1, 'V2G': 1, }, }
+    'Supply\ntechnology': {'CHP': 1},
+    'Demand\ntechnology': {'P2H2': 1, 'HP': 1, 'EV': 1}, #P2H2 represents P2G here
+    'Storage\ntechnology': {'Fuels': 1, 'Heat storage': 1, 'V2G': 1, }, }
 parameters_with_weights_sector_char = {
-    'Sector\nRepresentation': {'Heat': 1, 'Transport': 1},
-    'Technology\nSpecifications':
+    'Sector\nrepresentation': {'Heat': 1, 'Transport': 1},
+    'Technology\nspecifications':
         {'sector coupling supply': 1, 'sector coupling demand': 1,
          'sector coupling storage': 1},
     'Operations': {'efficiency': 1, 'ramping': 1, 'response time': 1,
@@ -321,7 +321,7 @@ weighted_models_sector_char_df = tools.get_weighted_models_from_evaluation_dicts
 # plot all dual
 rating_sector_df = \
     pd.DataFrame(rating_sector.sort_values(ascending=False)).rename(
-        columns={0:'Overall\nRating'})
+        columns={0:'Overall\nrating'})
 plot_representation_triple(rating_sector_df, 
     weighted_models_sector_tech_df[parameters_with_weights_sector_tech.keys()].loc[
         rating_sector.sort_values(ascending=False).index], 
@@ -334,10 +334,10 @@ plot_representation_triple(rating_sector_df,
 
 # Network dict
 parameters_with_weights_network = {
-    'Technology\nRepresentation':
+    'Technology\nrepresentation':
         {'Distribution Grid': 1, 'Transmission Grid': 1, #'Smart Grid': 1, 'Microgrid': 1, 'interconnectors': 1
          'network extension': 1, 'switches': 1},
-    'Detailed\nCharacteristics':
+    'Detailed\ncharacteristics':
         {'Grid representation': 1, 'import': 1,
                 'grid ancillary services': 1}
 
@@ -358,13 +358,13 @@ plot_representation_single(
 
 # Network dict
 parameters_with_weights_network_tech = {
-    'Grid Types':
+    'Grid types':
         {'Distribution Grid': 1, 'Transmission Grid': 1},
     'Topology': {'network extension': 1, 'switches': 1},}
 parameters_with_weights_network_char = {
-    'Grid\nRepresen-\ntation':{'Grid representation': 1}, 
-    'Import\nExport':{'import': 1},
-    'Ancillary\nServices':{'grid ancillary services': 1}
+    'Grid\nrepresen-\ntation':{'Grid representation': 1},
+    'Import\nexport':{'import': 1},
+    'Ancillary\nservices':{'grid ancillary services': 1}
 
 }
 
@@ -376,7 +376,7 @@ weighted_models_network_char_df = tools.get_weighted_models_from_evaluation_dict
 # plot all dual
 rating_network_df = \
     pd.DataFrame(rating_network.sort_values(ascending=False)).rename(
-        columns={0:'Overall\nRating'})
+        columns={0:'Overall\nrating'})
 plot_representation_triple(rating_network_df, 
     weighted_models_network_tech_df[parameters_with_weights_network_tech.keys()].loc[
         rating_network.sort_values(ascending=False).index], 
@@ -390,11 +390,11 @@ plot_representation_triple(rating_network_df,
 # Holistic definition is the concatenated version of all ratings
 
 weighted_models_holistic_df = pd.concat([rating_supply_df.rename(
-    columns={'Overall\nRating':'Supply'}),
-    rating_demand_df.rename(columns={'Overall\nRating':'Demand'}),
-    rating_storage_df.rename(columns={'Overall\nRating':'Storage'}),
-    rating_network_df.rename(columns={'Overall\nRating':'Network'}),
-    rating_sector_df.rename(columns={'Overall\nRating':'Sector\nCoupling'})],
+    columns={'Overall\nrating':'Supply'}),
+    rating_demand_df.rename(columns={'Overall\nrating':'Demand'}),
+    rating_storage_df.rename(columns={'Overall\nrating':'Storage'}),
+    rating_network_df.rename(columns={'Overall\nrating':'Network'}),
+    rating_sector_df.rename(columns={'Overall\nrating':'Sector\ncoupling'})],
     sort=True, axis=1)
 rating_holistic = weighted_models_holistic_df.sum(axis=1).divide(5)
 rating_holistic.sort_values(ascending=False)*100
@@ -402,7 +402,7 @@ rating_holistic.sort_values(ascending=False)*100
 # Plot all models
 rating_holistic_df = \
     pd.DataFrame(rating_holistic.sort_values(ascending=False)).rename(
-        columns={0:'Overall\nRating'})
+        columns={0:'Overall\nrating'})
 plot_representation_holistic(
     rating_holistic_df, weighted_models_holistic_df.loc[
         rating_holistic.sort_values(ascending=False).index], figsize=(6.5,4.8),
@@ -442,8 +442,8 @@ print(high_representation_df)
 
 generalfactors = table_values.loc[:, ['prob yes', 'social yes']].sum()
 plot_bar_horizontal(
-        generalfactors, ['Probalistic\nBehavior', 'Social\nFactors'],
-        title='General Factors', max_val=nr_of_surveys, figsize=(3., 2.5),
+        generalfactors, ['Probalistic\nbehavior', 'Social\nfactors'],
+        title='General factors', max_val=nr_of_surveys, figsize=(3., 2.5),
     save_fig_dir=module_path + '/plots/a00a_paper_general_factors.pdf')
 
 
@@ -454,10 +454,10 @@ decisionmaking['other decision making'] = \
 decisionmaking['no decision making'] = \
     table_values.loc[:, 'no decision making'].sum()
 plot_bar_horizontal(
-    decisionmaking, ['Perfect Foresight','Rolling Horizon /\nMyopic Foresight',
-                     'Decision- /\nAgentbased', 'Other Decision\nMaking',
-                     'No Decision\nMaking'],
-    title='Decision Making Process', max_val=nr_of_surveys,
+    decisionmaking, ['Perfect foresight','Rolling horizon /\nMyopic foresight',
+                     'Decision- /\nagentbased', 'Other decision\nmaking',
+                     'No decision\nmaking'],
+    title='Decision making process', max_val=nr_of_surveys,
     save_fig_dir=module_path + '/plots/a00b_paper_decision_making.pdf')
 
 print(table_values['other decision making'])
@@ -467,9 +467,9 @@ flex_specs = \
     :, ['efficiency fixed value', 'efficiency function',
         'ramping yes', 'response time yes', 'recovery time yes']].sum()
 plot_bar_horizontal(
-    flex_specs, ['Fixed Efficiency', 'Dynamic Efficiency', 'Ramping',
-                 'Response Time', 'Recovery Time'],
-    title='Flexibility Specifications', max_val=nr_of_surveys, figsize=(3.5, 2.4),
+    flex_specs, ['Fixed efficiency', 'Dynamic efficiency', 'Ramping',
+                 'Response time', 'Recovery time'],
+    title='Flexibility specifications', max_val=nr_of_surveys, figsize=(3.5, 2.4),
     save_fig_dir=str(cur_dir) + '/plots/a00c_paper_flex_spec.pdf')
 
 # plot which supply technologies are represented to what extent
@@ -483,12 +483,12 @@ supply = pd.concat([convPP, dispRES, vRES, other_supply])
 
 plot_bar_horizontal(
     series=supply,
-    x_labels=['Hard Coal', 'Lignite', 'Oil', 'Natural Gas',
+    x_labels=['Hard coal', 'Lignite', 'Oil', 'Natural gas',
               'CCGT', 'OCGT', 'Bioenergy', 'Geothermal',
-              'Hydro Reservoir', 'CSP', 'PV', 'Wind Onshore',
-              'Wind Offshore', 'Hydro ROR', 'Wave', 'Tidal',
+              'Hydro reservoir', 'CSP', 'PV', 'Wind onshore',
+              'Wind offshore', 'Hydro ROR', 'Wave', 'Tidal',
               'PEM-FC', 'SOFC', 'Nuclear'],
-    title='Supply Technologies', max_val=nr_of_surveys,
+    title='Supply technologies', max_val=nr_of_surveys,
     label_name = 'pos_def', figsize=(3.5, 3.75), bbox_to_anchor=(-0.4,0.),
     save_fig_dir=str(cur_dir) + '/plots/a01a_paper_supply_tech.pdf')
 
@@ -496,9 +496,9 @@ tech_representation = \
     table_values.loc[:, ['minimum load yes', 'discrete expansion yes',
                          'curtailed operation yes']].sum()
 plot_bar_horizontal(
-    tech_representation, ['Minimum\nLoad', 'Discrete\nExpansaion',
-                              'Curtailed\nOperation'],
-    title='Supply Specifications', max_val=nr_of_surveys, figsize=(3, 2.5),
+    tech_representation, ['Minimum\nload', 'Discrete\nexpansaion',
+                              'Curtailed\noperation'],
+    title='Supply specifications', max_val=nr_of_surveys, figsize=(3, 2.5),
     save_fig_dir=str(cur_dir) + '/plots/a01b_paper_supply_spec.pdf')
 
 # plot which demand technologies are represented to what extent
@@ -506,7 +506,7 @@ demand = table_values.loc[:, 'households/pos':'service sector/def'].sum()
 
 plot_bar_horizontal(
     series=demand, x_labels=['Households', 'Industrial', 'Service'],
-    title='Demand Technologies', max_val=nr_of_surveys, label_name='pos_def',
+    title='Demand technologies', max_val=nr_of_surveys, label_name='pos_def',
     bbox_to_anchor=(-0.4, 0.),
     save_fig_dir=str(cur_dir) + '/plots/a02a_paper_demand_tech.pdf')
 
@@ -529,9 +529,9 @@ tmp_tech_representation_demand['Type-dependent'] = \
 tech_representation_demand = tmp_tech_representation_demand.sum()
 plot_bar_horizontal(
     tech_representation_demand,
-    ['Fixed Value MDL', 'Time-Dependent MDL', 'Type-Dependent MDL',
-     'Time- & Type-\nDependent MDL', 'No MDL', 'Shifting Time'],
-    title='Demand Specifications', max_val=nr_of_surveys, figsize=(3.25, 2.4),
+    ['Fixed value MDL', 'Time-dependent MDL', 'Type-dependent MDL',
+     'Time- & type-\ndependent MDL', 'No MDL', 'Shifting time'],
+    title='Demand specifications', max_val=nr_of_surveys, figsize=(3.25, 2.4),
     save_fig_dir=str(cur_dir) + '/plots/a02b_paper_demand_spec.pdf')
 
 # plot which storage technologies are represented to what extent
@@ -539,8 +539,8 @@ storage = table_values.loc[:, 'PHS/pos':'Flywheels/def'].sum()
 
 plot_bar_horizontal(
     series=storage, x_labels=[
-        'Pumped Hydro', 'Batteries', 'Compressed Air', 'Capacitors',
-        'Flywheels'], title='Storage Technologies', max_val=nr_of_surveys,
+        'Pumped hydro', 'Batteries', 'Compressed air', 'Capacitors',
+        'Flywheels'], title='Storage technologies', max_val=nr_of_surveys,
     label_name='pos_def', bbox_to_anchor=(-0.4, 0.),
     save_fig_dir=str(cur_dir) + '/plots/a03a_paper_storage_tech.pdf')
 
@@ -556,8 +556,8 @@ tech_representation_storage = tmp_tech_representation_storage.sum()
 
 plot_bar_horizontal(
     tech_representation_storage,
-    ['Fixed Model', 'Dynamic\nModel', 'Cycle Aging', 'Calendrical\nAging',
-     'Self Discharge'], title='Storage Specifications', max_val=nr_of_surveys,
+    ['Fixed model', 'Dynamic\nmodel', 'Cycle aging', 'Calendrical\naging',
+     'Self discharge'], title='Storage specifications', max_val=nr_of_surveys,
     figsize=(3.25, 2.4),
     save_fig_dir=str(cur_dir) + '/plots/a03b_paper_storage_spec.pdf')
 
@@ -570,8 +570,8 @@ network = table_values.loc[:, ['Distribution Grid/pos', 'Distribution Grid/def',
 
 plot_bar_horizontal(
     series=network,
-    x_labels=['Distribution\nGrid', 'Transmission\nGrid', 'Interconnectors',
-              'Network\nExtension', 'Switches'], title='Network Technologies',
+    x_labels=['Distribution\ngrid', 'Transmission\ngrid', 'Interconnectors',
+              'Network\nextension', 'Switches'], title='Network technologies',
     max_val=nr_of_surveys, label_name = 'pos_def', bbox_to_anchor=(-0.4, 0.),
     save_fig_dir=str(cur_dir) + '/plots/a04a_paper_network_tech.pdf')
 
@@ -579,9 +579,9 @@ ancillary_services = \
     table_values.loc[:, 'spinning reserve':'black start' ].sum()
 plot_bar_horizontal(
     ancillary_services,
-    ['Spinning Reserve', 'Balancing Energy', 'Sheddable Loads',
-     'Feed-in Management', 'Redispatch', 'Power Factor Correction',
-     'Curtailment', 'Blackstart'], title='Ancillary Services',
+    ['Spinning reserve', 'Balancing energy', 'Sheddable loads',
+     'Feed-in management', 'Redispatch', 'Power factor correction',
+     'Curtailment', 'Blackstart'], title='Ancillary services',
     max_val=nr_of_surveys,
     save_fig_dir=str(cur_dir) + '/plots/a04b_ancillary_services.pdf')
 
@@ -591,8 +591,8 @@ tech_representation_network = \
 
 plot_bar_horizontal(
     tech_representation_network,
-    ['NTC', 'AC PF', 'DC PF', 'Simplified Im-/Export', 'Flow-Based Im-/Export'],
-    title='Network Specifications', max_val=nr_of_surveys, figsize=(3.5, 2.4),
+    ['NTC', 'AC PF', 'DC PF', 'Simplified import/\nexport', 'Flow-based import/\nexport'],
+    title='Network specifications', max_val=nr_of_surveys, figsize=(3.5, 2.4),
     save_fig_dir=str(cur_dir) + '/plots/a04c_paper_network_spec.pdf')
 
 # plot which sector coupling technologies are represented to what extent
@@ -604,9 +604,9 @@ sector = table_values.loc[:, ['P2Gas/pos', 'P2Gas/def',
                                'EV/pos', 'EV/def', 'V2Grid/pos', 'V2Grid/def']].sum()
 
 plot_bar_horizontal(
-    series=sector, title='SC Technologies', max_val=nr_of_surveys,
-    x_labels=['Power-to-Gas', 'Fuels', 'CHP', 'Heat Pumps', 'Heat Storage',
-              'Electric Vehicles', 'Vehicle-to-Grid'], label_name='pos_def',
+    series=sector, title='SC technologies', max_val=nr_of_surveys,
+    x_labels=['Power-to-gas', 'Fuels', 'CHP', 'Heat pumps', 'Heat storage',
+              'Electric vehicles', 'Vehicle-to-grid'], label_name='pos_def',
     bbox_to_anchor=(-0.4,0.),
     save_fig_dir=str(cur_dir) + '/plots/a05a_paper_sector_tech.pdf')
 
@@ -614,8 +614,8 @@ tech_representation_heat = table_values.loc[:, 'heat sector excluded':'transport
 
 plot_bar_horizontal(
     tech_representation_heat,
-    ['Excluded', 'Exogen Aggregated', 'Endogen Demand', 'Endogen Technology',
-     'Other'], title='Heat Specifications', max_val=nr_of_surveys,
+    ['Excluded', 'Exogen aggregated', 'Endogen demand', 'Endogen technology',
+     'Other'], title='Heat specifications', max_val=nr_of_surveys,
     figsize=(3.5, 2.4),
     save_fig_dir=str(cur_dir) + '/plots/a05b_paper_heat_spec.pdf')
 
@@ -624,8 +624,8 @@ tech_representation_transport = \
 
 plot_bar_horizontal(
     tech_representation_transport,
-    ['Excluded', 'Exogen Aggregated', 'Endogen Demand', 'Endogen Technology',
-     'Other'], title='Transport Specifications', max_val=nr_of_surveys,
+    ['Excluded', 'Exogen aggregated', 'Endogen demand', 'Endogen technology',
+     'Other'], title='Transport specifications', max_val=nr_of_surveys,
     figsize=(3.5, 2.4),
     save_fig_dir=str(cur_dir) + '/plots/a05c_paper_transport_spec.pdf')
 

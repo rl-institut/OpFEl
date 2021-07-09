@@ -37,18 +37,18 @@ def plot_bar_horizontal(series, x_labels, figsize=(3.5, 2.5), title='',
         plt.barh(x_pos, y_values[x_pos], align='center')
         no_label = True
     elif label_name == '':
-        plt.barh(x_pos, y_values[x_pos*2], align='center', label='possible')
+        plt.barh(x_pos, y_values[x_pos*2], align='center', label='Possible')
         plt.barh(
-            x_pos, y_values[x_pos*2+1], align='center', label='usually\nused')
+            x_pos, y_values[x_pos*2+1], align='center', label='Usually\nused')
     elif label_name == 'pos_def':
-        plt.barh(x_pos, y_values[x_pos*2], align='center', label='possible')
-        plt.barh(x_pos, y_values[x_pos*2+1], align='center', label='defined')
+        plt.barh(x_pos, y_values[x_pos*2], align='center', label='Possible')
+        plt.barh(x_pos, y_values[x_pos*2+1], align='center', label='Defined')
     elif label_name == 'yes_no':
-        plt.barh(x_pos, y_values[x_pos * 2], align='center', label='yes')
-        plt.barh(x_pos, y_values[x_pos * 2 + 1], align='center', label='no')
+        plt.barh(x_pos, y_values[x_pos * 2], align='center', label='Yes')
+        plt.barh(x_pos, y_values[x_pos * 2 + 1], align='center', label='No')
     elif label_name == 'no_yes':
-        plt.barh(x_pos, y_values[x_pos * 2 + 1], align='center', label='no')
-        plt.barh(x_pos, y_values[x_pos * 2], align='center', label='yes')
+        plt.barh(x_pos, y_values[x_pos * 2 + 1], align='center', label='No')
+        plt.barh(x_pos, y_values[x_pos * 2], align='center', label='Yes')
     ax.set_yticks(range(len(x_labels)))
     ax.set_yticklabels(x_labels, rotation='horizontal')
     ax.invert_yaxis()
@@ -97,7 +97,7 @@ def plot_representation_triple(rating, parameters_1, parameters_2,
     # set colorbar and adjust size of second subplot
     cbar = ax2.figure.colorbar(im, ax=ax2)
     cbar.mappable.set_clim(0, 1.0)
-    cbar.ax.set_ylabel("Level of Representation", rotation=90, va="top")
+    cbar.ax.set_ylabel("Level of representation", rotation=90, va="top")
 
     # We want to show all ticks...
     ax0.set_xticks(np.arange(rating.shape[1]))
@@ -153,7 +153,7 @@ def plot_representation_dual(parameters_1, parameters_2,
     # set colorbar and adjust size of second subplot
     cbar = ax2.figure.colorbar(im, ax=ax2)
     cbar.mappable.set_clim(0, 1.0)
-    cbar.ax.set_ylabel("Level of Representation", rotation=90, va="top")
+    cbar.ax.set_ylabel("Level of representation", rotation=90, va="top")
     from mpl_toolkits.axes_grid1 import make_axes_locatable
     divider2 = make_axes_locatable(ax)
     cax2 = divider2.append_axes("right", size="5%", pad=0.35)
@@ -201,7 +201,7 @@ def plot_representation_single(parameters, title=None,
     # set colorbar and adjust size of second subplot
     cbar = ax.figure.colorbar(im, ax=ax)
     cbar.mappable.set_clim(0, 1.0)
-    cbar.ax.set_ylabel("Level of Representation", rotation=90, va="top")
+    cbar.ax.set_ylabel("Level of representation", rotation=90, va="top")
     from mpl_toolkits.axes_grid1 import make_axes_locatable
     # We want to show all ticks...
     ax.set_xticks(np.arange(parameters.shape[1]))
@@ -242,7 +242,7 @@ def plot_representation_holistic(rating, parameters, title=None,
     # set colorbar and adjust size of second subplot
     cbar = ax.figure.colorbar(im, ax=ax)
     cbar.mappable.set_clim(0, 1.0)
-    cbar.ax.set_ylabel("Level of Representation", rotation=90, va="top")
+    cbar.ax.set_ylabel("Level of representation", rotation=90, va="top")
     from mpl_toolkits.axes_grid1 import make_axes_locatable
     # We want to show all ticks...
     ax0.set_xticks(np.arange(rating.shape[1]))

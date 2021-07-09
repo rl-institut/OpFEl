@@ -1,4 +1,4 @@
-# survey_eval
+# Open ESM Flexibility Evaluation Tool (OpFEl)
 Evaluation of our survey conducted on flexibility representation in open source 
 energy models
 
